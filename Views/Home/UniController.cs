@@ -87,6 +87,7 @@ namespace WebApplication2.Views.Home
             {
                 _webApplication2DbContext.Class.Add(obj);
                 _webApplication2DbContext.SaveChanges();
+                return RedirectToAction("Details");
             }
             return View(classFromDb);
         }
