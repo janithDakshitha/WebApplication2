@@ -8,8 +8,13 @@ var connectionString = builder.Configuration.GetConnectionString("WebApplication
 builder.Services.AddDbContext<WebApplication2DbContext>(options =>
     options.UseSqlServer(connectionString));
 
-builder.Services.AddDefaultIdentity<WebApplication2User>(options => options.SignIn.RequireConfirmedAccount = true)
+//builder.Services.AddDefaultIdentity<WebApplication2User>(options => options.SignIn.RequireConfirmedAccount = true)
+//    .AddEntityFrameworkStores<WebApplication2DbContext>();
+
+//dulangi
+builder.Services.AddDefaultIdentity<WebApplication2User>().AddDefaultTokenProviders().AddRoles<IdentityRole>()
     .AddEntityFrameworkStores<WebApplication2DbContext>();
+
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();

@@ -8,8 +8,9 @@ using WebApplication2.Areas.Identity.Data;
 using WebApplication2.Data;
 using WebApplication2.Models;
 
-namespace WebApplication2.Views.Home
+namespace WebApplication2.Controllers
 {
+    [Authorize(Roles = "University Admin")]
     public class UniController : Controller
     {
         private readonly WebApplication2DbContext _webApplication2DbContext;
@@ -25,7 +26,7 @@ namespace WebApplication2.Views.Home
             webHostEnvironment = webHost;
         }
         [Authorize]
-        public async Task<IActionResult> Details ()
+        public async Task<IActionResult> Details()
         {
             var UserId = User.FindFirstValue(ClaimTypes.NameIdentifier);
             if (UserId == null || _webApplication2DbContext.Class == null)
@@ -137,7 +138,7 @@ namespace WebApplication2.Views.Home
 
 
 
-            public IActionResult Degree(string Id)
+        public IActionResult Degree(string Id)
         {
             IEnumerable<degree> DegreeList = _webApplication2DbContext.degree.Where(c => c.UserId == Id).ToList()/*.FirstOrDefault()*/;
             return View(DegreeList);
