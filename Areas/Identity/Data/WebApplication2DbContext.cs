@@ -36,4 +36,5 @@ public class WebApplication2DbContext : IdentityDbContext<WebApplication2User>
     //public DbSet<Class> Class { get; set; }
 
     public DbSet<WebApplication2.Models.Class> Class { get; set; }
+    public DbSet<degree> degree { get; set; }
 }

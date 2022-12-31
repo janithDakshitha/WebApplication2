@@ -11,7 +11,9 @@ namespace WebApplication2.Models
         public string UserId { get; set; }
         public string? Uniname { get; set; } 
         public string? UniFullname{ get; set; }
-
+        public string? ProfilPic_URL { get; set; }
+        [NotMapped]
+        public IFormFile UploadedProfilePic { get; set; }
         //public string UserId { get; set; }
         public virtual WebApplication2User WebApplication2User { get; set; }
     }
