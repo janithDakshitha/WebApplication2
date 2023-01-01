@@ -1,0 +1,39 @@
+﻿@model IEnumerable<Class>
+@{
+}
+
+<form id="form">
+    <input type="search" id="search" name="" placeholder="Search...">
+    <button>Search</button>
+</form>
+<br>
+@foreach (var obj in Model)
+{
+
+
+    <div class="container" style="border: 1px solid black;border-collapse: collapse  ;">
+        
+        <div class="col-4 row">
+           @* <input type="hidden" asp-for="ProfilPic_URL" id="ProfilPic_URL" />*@
+            <div class="form-group col-12 justify-content-around align-middle mb-0 pb-0">
+                <img id="PreviewPhoto" src="~/profilepics/@obj.ProfilPic_URL" alt="Logo Image" width=" 200" height="200"
+                 style="border:1px;margin-top:10px;" />
+            </div>
+          
+
+        </div>
+        <h3>@obj.Uniname</h3><br>
+        @* <p>add image here</p>*@
+        <br>
+        <br><p>
+            @obj.UniFullname
+
+        </p>
+
+
+
+        <a asp-controller="UniProfileController" asp-action="Details" asp-route-id="@obj.UserId" class="btn btn-primary col-lg-12">visit @obj.Uniname page</a>
+        @* <a asp-controller="UnivDashController1" asp-action="IndividualUniProfile" asp-route-id="@obj.ID" class="btn btn-primary">visit @obj.UniName page</a>*@
+    </div>
+}
+<br>
